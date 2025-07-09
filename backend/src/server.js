@@ -1,6 +1,23 @@
 import express from "express";
+import { ENV } from "./config/env.js";
+import { connectDB } from "./config/db.js";
 
 const app = express();
 
+app.get("/", (req, res) => res.send("Hello from Server"));
 
-app.listen(5001 , ()=> console.log("Run Server Port 5001"))
+const startServer = async () => {
+  try {
+    await connectDB();
+
+    app.listen(ENV.PORT, () =>
+      console.log(`Server is up and running on ${ENV.PORT}`)
+    );
+  } catch (error) {
+    console.error("Faild to start server:", error.message);
+    process.exit(1);
+  }
+};
+
+
+startServer()
