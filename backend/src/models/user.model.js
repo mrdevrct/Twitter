@@ -29,6 +29,15 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    bannerImage: {
+      type: String,
+      default: "",
+    },
+    bio: {
+      type: String,
+      default: "",
+      maxLength: 160,
+    },
     location: {
       type: String,
       default: "",
@@ -46,9 +55,7 @@ const userSchema = new mongoose.Schema(
       },
     ],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
 
 const User = mongoose.model("User", userSchema);
