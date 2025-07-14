@@ -39,7 +39,7 @@ export const syncUser = asyncHandler(async (req, res) => {
     clerkId: userId,
     email: clerkUser.emailAddresses[0].emailAddress,
     firstName: clerkUser.firstName || "",
-    lastName: clerkUser.lastName || "",
+    lastName: clerkUser.firstName ? clerkUser.firstName : "",
     username: clerkUser.emailAddresses[0].emailAddress.split("@")[0],
     profilePicture: clerkUser.imageUrl || "",
   };
