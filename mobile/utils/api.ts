@@ -4,6 +4,7 @@ import { useAuth } from "@clerk/clerk-expo";
 const API_BASE_URL =
   process.env.EXPO_PUBLIC_API_URL || "https://twitter-self-beta.vercel.app/api";
 
+console.log("API_BASE_URL =>", API_BASE_URL);
 
 // this will basically create an authenticated api, pass the token in the header
 export const createApiClient = (
@@ -32,4 +33,16 @@ export const userApi = {
   getCurrentUser: (api: AxiosInstance) => api.get("/users/me"),
   updateProfile: (api: AxiosInstance, data: any) =>
     api.put("/users/profile", data),
+};
+
+export const postApi = {
+  createPost: (api: AxiosInstance, data: { content: string; image?: string }) =>
+    api.post("/posts", data),
+  getPosts: (api: AxiosInstance) => api.get("/posts"),
+  getUserPosts: (api: AxiosInstance, username: string) =>
+    api.get(`/posts/user/${username}`),
+  likePost: (api: AxiosInstance, postId: string) =>
+    api.post(`/posts/${postId}/like`),
+  deletePost: (api: AxiosInstance, postId: string) =>
+    api.delete(`/posts/${postId}`),
 };
