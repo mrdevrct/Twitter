@@ -4,6 +4,8 @@ import { useAuth } from "@clerk/clerk-expo";
 const API_BASE_URL =
   process.env.EXPO_PUBLIC_API_URL || "https://twitter-self-beta.vercel.app/api";
 
+
+// this will basically create an authenticated api, pass the token in the header
 export const createApiClient = (
   getToken: () => Promise<string | null>
 ): AxiosInstance => {
