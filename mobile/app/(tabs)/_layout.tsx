@@ -43,20 +43,20 @@ const TabsLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="messages"
-        options={{
-          title: "",
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="mail" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="notifications"
         options={{
           title: "",
           tabBarIcon: ({ color, size }) => (
             <Feather name="bell" size={size} color={color} />
+          ),
+        }}
+      />
+            <Tabs.Screen
+        name="messages"
+        options={{
+          title: "",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="mail" size={size} color={color} />
           ),
         }}
       />
