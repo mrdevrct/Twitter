@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ScrollView,
   ActivityIndicator,
+  RefreshControl,
 } from "react-native";
 import React from "react";
 import {
@@ -56,6 +57,13 @@ const NotificationsScreen = () => {
         className="flex-1"
         contentContainerStyle={{ paddingBottom: 100 + insets.bottom }}
         showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={() => refetch()}
+            tintColor="#1DA1F2"
+          />
+        }
       >
         {isLoading ? (
           <View className="flex-1 items-center justify-center p-8">
